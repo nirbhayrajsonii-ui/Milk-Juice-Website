@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amul Kool Rose Elixir // The Kinetic Fluid Experience</title>
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="An immersive scroll-driven kinetic art experience using 220 high-fidelity frames, canvas rendering, and smooth motion interpolation.">
+    <meta name="keywords" content="kinetic art, scroll animation, canvas rendering, web design, web design aesthetics, amul kool, rose milk">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Google Fonts: Syne (display), Inter (body), Manrope & Plus Jakarta Sans (Amul content) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&family=Manrope:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Tailwind Custom Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#fff8f5",
+                        "inverse-primary": "#ffb1c7",
+                        "surface-dim": "#e1d8d4",
+                        "surface-variant": "#e9e1dc",
+                        "on-secondary-fixed": "#261900",
+                        "primary-fixed": "#ffd9e2",
+                        "on-primary-container": "#661638",
+                        "tertiary-fixed-dim": "#debfc2",
+                        "tertiary-container": "#b4989b",
+                        "on-secondary-container": "#785a1a",
+                        "on-tertiary-fixed": "#281719",
+                        "surface-container-low": "#fbf2ed",
+                        "secondary-fixed-dim": "#e9c176",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ffdea5",
+                        "outline": "#867277",
+                        "inverse-on-surface": "#f8efea",
+                        "surface-container-highest": "#e9e1dc",
+                        "surface": "#fff8f5",
+                        "primary-fixed-dim": "#ffb1c7",
+                        "outline-variant": "#d9c0c6",
+                        "on-surface": "#1e1b18",
+                        "background": "#fff8f5",
+                        "surface-container-high": "#efe6e2",
+                        "tertiary": "#70585b",
+                        "secondary-container": "#fed488",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#3e001d",
+                        "primary-container": "#e87ea1",
+                        "surface-container": "#f5ece7",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#574144",
+                        "on-surface-variant": "#544247",
+                        "primary": "#9a3f60",
+                        "on-tertiary-container": "#453133",
+                        "on-error": "#ffffff",
+                        "on-background": "#1e1b18",
+                        "secondary": "#775a19",
+                        "tertiary-fixed": "#fbdbde",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#34302c",
+                        "on-primary-fixed-variant": "#7c2748",
+                        "surface-tint": "#9a3f60"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "md": "24px",
+                        "base": "8px",
+                        "xl": "80px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Splash Preloader Screen -->
+    <div id="loader" class="loader-overlay">
+        <div class="loader-content">
+            <div class="logo-wrapper">
+                <span class="logo-text">AMUL KOOL</span>
+                <span class="logo-dot"></span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar-glow"></div>
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="loader-status">
+                <span class="status-text">INITIALIZING KINETIC BOTANICALS</span>
+                <span class="percentage" id="loader-percentage">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fixed HTML5 Canvas Container -->
+    <div id="canvas-container">
+        <canvas id="animation-canvas"></canvas>
+        <div class="canvas-ambient-glow"></div>
+    </div>
+
+    <!-- Fixed Global Navigation -->
+    <header class="nav-bar" id="main-nav">
+        <div class="nav-logo">
+            <span class="logo-brand">AMUL KOOL</span>
+            <span class="logo-sub">/ ROSE ELIXIR</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#hero" class="nav-link active">Experience</a>
+            <a href="#philosophy" class="nav-link">Concept</a>
+            <a href="#mechanics" class="nav-link">Specs</a>
+            <a href="#flavor" class="nav-link">Flavor</a>
+            <a href="#ingredients" class="nav-link">Ingredients</a>
+            <a href="#store" class="nav-link">Find Store</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn btn-primary" onclick="document.getElementById('store').scrollIntoView({behavior: 'smooth'})">Find Store</button>
+        </div>
+    </header>
+
+    <!-- Fixed Vertical Progress Bar -->
+    <div class="scroll-progress-indicator">
+        <div class="indicator-track">
+            <div class="indicator-fill" id="indicator-fill"></div>
+        </div>
+        <div class="indicator-steps">
+            <div class="step active" onclick="scrollToSection(0)"><span class="step-tooltip">Design</span></div>
+            <div class="step" onclick="scrollToSection(1)"><span class="step-tooltip">Philosophy</span></div>
+            <div class="step" onclick="scrollToSection(2)"><span class="step-tooltip">Mechanics</span></div>
+            <div class="step" onclick="scrollToSection(3)"><span class="step-tooltip">Specs</span></div>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator (Bottom Left) -->
+    <div class="scroll-helper" id="scroll-helper">
+        <div class="mouse-icon">
+            <div class="mouse-wheel"></div>
+        </div>
+        <div class="helper-text">
+            <span>SCROLL TO EXPLORE</span>
+            <span class="helper-arrow">↓</span>
+        </div>
+    </div>
+
+    <!-- Interactive Playback Control Panel (Bottom Right) -->
+    <div class="playback-panel glass" id="playback-panel">
+        <div class="panel-header">
+            <span class="panel-title">CONTROLLER</span>
+            <div class="live-status">
+                <span class="status-pulse"></span>
+                <span class="status-mode" id="status-mode">SCROLLING</span>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="control-row">
+                <button class="ctrl-btn" id="play-pause-btn" title="Autoplay / Pause">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" id="play-icon">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" id="pause-icon" class="hidden">
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                    </svg>
+                </button>
+                <div class="scrubber-wrapper">
+                    <input type="range" min="0" max="219" value="0" class="frame-scrubber" id="frame-scrubber">
+                </div>
+            </div>
+            <div class="panel-footer">
+                <span class="frame-counter" id="frame-counter">FRAME 001 / 220</span>
+                <div class="speed-control">
+                    <span class="speed-label">AUTO-SPEED:</span>
+                    <select id="playback-speed" class="speed-select">
+                        <option value="0.5">0.5x</option>
+                        <option value="1" selected>1.0x</option>
+                        <option value="1.5">1.5x</option>
+                        <option value="2">2.0x</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Scroll Container -->
+    <main id="scroll-container">
+        
+        <!-- Kinetic Interactive Scroll Section Wrapper -->
+        <div id="kinetic-container">
+            
+            <!-- Section 1: Hero -->
+            <section class="scroll-section" id="hero">
+                <div class="section-content hero-content">
+                    <div class="hero-tag animate-on-load">KINETIC ART EXPERIENCE</div>
+                    <h1 class="hero-title animate-on-load">ROSE ELIXIR</h1>
+                    <p class="hero-subtitle animate-on-load">A mesmerizing scroll-driven kinetic splash into premium Damascus rose petals and chilled farm-fresh dairy.</p>
+                </div>
+            </section>
+
+            <!-- Section 2: Philosophy (Liquid Concept) -->
+            <section class="scroll-section" id="philosophy">
+                <div class="section-content left-align">
+                    <div class="glass-card">
+                        <div class="card-tag">01 / CONCEPT</div>
+                        <h2 class="card-title">Liquid Elegance</h2>
+                        <p class="card-text">Watch the kinetic splash unfold as dairy meets botanical extraction. By scrolling, you command the physics of motion, controlling the rise, fall, and blending of ingredients at your own pace.</p>
+                        <div class="card-indicator">
+                            <span class="card-line"></span>
+                            <span class="card-number">ACTIVE LIQUID FLUID</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Mechanics (Fluid Emulsion) -->
+            <section class="scroll-section" id="mechanics">
+                <div class="section-content right-align">
+                    <div class="glass-card">
+                        <div class="card-tag">02 / FLUIDITY</div>
+                        <h2 class="card-title">Perfect Emulsion</h2>
+                        <p class="card-text">Distilled at peak cold levels, our dairy integration captures the creaminess and freshness of our rose blend. Scrub back and forth to control time and experience mathematical motion flow.</p>
+                        <div class="card-indicator">
+                            <span class="card-line"></span>
+                            <span class="card-number">INTERPOLATION ENGINE ON</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Specifications -->
+            <section class="scroll-section" id="stats">
+                <div class="section-content left-align">
+                    <div class="glass-card spec-card">
+                        <div class="card-tag">03 / TECHNICALS</div>
+                        <h2 class="card-title">Kinetic Specs</h2>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <span class="spec-val">220</span>
+                                <span class="spec-lbl">High-Def Frames</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-val">60fps</span>
+                                <span class="spec-lbl">Motion Lerping</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-val">Canvas</span>
+                                <span class="spec-lbl">WebGL / 2D Context</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-val">0ms</span>
+                                <span class="spec-lbl">Input Damping Lag</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+
+        <!-- Amul Kool Product Details (from code.html) -->
+        <div id="tailwind-content" class="relative z-10 bg-surface font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container floral-bg-accent overflow-x-hidden">
+            
+            <!-- Flavor Section (Bento Grid Style) -->
+            <section id="flavor" class="py-xl max-w-container-max mx-auto px-gutter">
+                <div class="text-center mb-xl">
+                    <h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Crafted with Perfection</h2>
+                    <p class="text-body-md text-on-surface-variant">Three pillars of the ultimate rose experience</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-lg text-left">
+                    <!-- Characteristic 1 -->
+                    <div class="chilled-glass p-lg rounded-xl flex flex-col items-center text-center petal-shadow group transition-transform hover:-translate-y-2">
+                        <div class="w-20 h-20 bg-primary-fixed rounded-full flex items-center justify-center mb-md group-hover:bg-primary-container transition-colors">
+                            <span class="material-symbols-outlined text-primary text-4xl" data-icon="local_florist">local_florist</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-primary mb-sm">Real Rose Petals</h3>
+                        <p class="text-body-md text-on-surface-variant">Infused with natural essence distilled from hand-picked botanical gardens.</p>
+                    </div>
+                    <!-- Characteristic 2 -->
+                    <div class="chilled-glass p-lg rounded-xl flex flex-col items-center text-center petal-shadow group transition-transform hover:-translate-y-2">
+                        <div class="w-20 h-20 bg-secondary-fixed rounded-full flex items-center justify-center mb-md group-hover:bg-secondary-container transition-colors">
+                            <span class="material-symbols-outlined text-secondary text-4xl" data-icon="opacity">opacity</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-secondary mb-sm">Creamy Milk</h3>
+                        <p class="text-body-md text-on-surface-variant">Homogenized, pure dairy sourced from local Amul cooperatives for rich texture.</p>
+                    </div>
+                    <!-- Characteristic 3 -->
+                    <div class="chilled-glass p-lg rounded-xl flex flex-col items-center text-center petal-shadow group transition-transform hover:-translate-y-2">
+                        <div class="w-20 h-20 bg-tertiary-fixed rounded-full flex items-center justify-center mb-md group-hover:bg-tertiary-container transition-colors">
+                            <span class="material-symbols-outlined text-tertiary text-4xl" data-icon="ac_unit">ac_unit</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-tertiary mb-sm">Chilled Perfection</h3>
+                        <p class="text-body-md text-on-surface-variant">Micro-chilled at 4°C to maintain peak botanical freshness in every sip.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ingredients & Health -->
+            <section id="ingredients" class="bg-surface-container py-xl">
+                <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-xl items-center text-left">
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl">
+                        <img alt="Rose Petals and Milk" class="w-full h-[500px] object-cover" data-alt="A macro close-up of vibrant pink rose petals scattered over a pool of smooth, pure white milk, creating a serene and natural botanical aesthetic with soft natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHh_8q3DZXwXsOP_cEN3iWuP9Tsl_XqKBQio-77I8hZY3IoK21S-q_mD5U1lMod6CGH2fc5VZEqT7UqThNCpO49x5kfyxlpUuunESEvJW6XWAg6UL-VueGQEdAqJx-Qs05LR-1-DP99Izfa8Kk0-umQdYHlsWiPi1NLjFqp21nNaU3HT4t3g5LbSlj6ekB06QOJVneDVPOVOi1rzpN7FoVehEiRJdpCnMc7ljPy0AJ42H7DZ1r7sGJNvRXIQoWFK_cfp38FTBd-qk"/>
+                        <div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+                    </div>
+                    <div class="scroll-reveal">
+                        <h2 class="font-display-lg text-display-lg text-primary mb-md">Purity in Every Drop</h2>
+                        <p class="text-body-lg text-on-surface-variant mb-lg">
+                            We believe in transparency. Amul Kool Rose Milk contains no artificial sweeteners or synthetic dyes. Just the timeless blend of India's finest dairy and nature's most aromatic flower.
+                        </p>
+                        <div class="space-y-md">
+                            <div class="flex items-start gap-md">
+                                <span class="material-symbols-outlined text-primary mt-1" data-icon="check_circle">check_circle</span>
+                                <div>
+                                    <p class="font-headline-md text-headline-md text-on-surface">100% Natural Extract</p>
+                                    <p class="text-body-md text-on-surface-variant">Steam-distilled for maximum flavor potency.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-md">
+                                <span class="material-symbols-outlined text-primary mt-1" data-icon="check_circle">check_circle</span>
+                                <div>
+                                    <p class="font-headline-md text-headline-md text-on-surface">High Protein Content</p>
+                                    <p class="text-body-md text-on-surface-variant">Naturally rich in calcium and essential dairy proteins.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-md">
+                                <span class="material-symbols-outlined text-primary mt-1" data-icon="check_circle">check_circle</span>
+                                <div>
+                                    <p class="font-headline-md text-headline-md text-on-surface">No Preservatives</p>
+                                    <p class="text-body-md text-on-surface-variant">UHT processed to keep it fresh without chemicals.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lifestyle Section (Community Gallery) -->
+            <section id="lifestyle" class="py-xl">
+                <div class="max-w-container-max mx-auto px-gutter text-center mb-xl">
+                    <h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Join the Rose Community</h2>
+                    <p class="text-body-md text-on-surface-variant">Tag #AmulKoolRose to be featured</p>
+                </div>
+                <div class="max-w-container-max mx-auto px-gutter grid grid-cols-2 md:grid-cols-4 gap-md">
+                    <div class="aspect-square rounded-lg overflow-hidden group">
+                        <img alt="Lifestyle 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A stylish young person laughing while holding a cold pink drink in a modern, sun-drenched minimalist cafe with rose gold accents and plenty of indoor plants. The scene is bright and airy with a light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL2zIb3gbIxnZVOY_gsZZ9sfEg-IpH5dmtACf0lZ6v6JqRxrgUY2RzvuviiuFEJnslgqx6mggtkeIqGz6ZHnj4HZCAd3jooguS_dh0LzVWlEwSZPVR_DEssQziJmlhE3ohRYv8SQEXCpuLIsT7hibsOooL9T6H7wqE2R1SiZJZgyswhDe4OsXGnxe-j8XR6SnYzcfJyGT2fwkossuayWAfNgzvWRkkojysHchSLH62TJNWfX2igJeOQ9jn7UAHc_eqEq-ZvyizHQQ"/>
+                    </div>
+                    <div class="aspect-square rounded-lg overflow-hidden group">
+                        <img alt="Lifestyle 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A cozy flat-lay of a wooden desk with a cold bottle of rose milk, an open journal, and scattered pink petals under soft, morning sunlight streaming through a window. The palette is dominated by creams, soft pinks, and warm wood tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbzAMxVFteQ6tJP-FixjyhC7giLoipnHv2ZQjyeQekUPSXVNIP2zIMOTbqNJNWtNtCgEFyjPQ3Bk-R1GH4py4K_a3NaIVFbBP_X4iklz2oauBRJHgX9I1PBOSb0y8wVynU0mEJ-h3_Noq6eINZLnNGI_kWXRK7ClEMkECyRLlmVQozpaxAJK3nGShi30RwZbJqj3A43RSCLo4qFP2pTxQeKcn9YiIAiOX8Z3SmZyBSGpxYrPQCG1K9PXti0lN82OSDmeB0aZ4PJTc"/>
+                    </div>
+                    <div class="aspect-square rounded-lg overflow-hidden group">
+                        <img alt="Lifestyle 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Two friends clinking cold glass bottles of pink rose milk together during an elegant picnic on a manicured lawn. Soft focus background with blooming rose bushes and golden hour lighting creating a warm, premium feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbAY3t0V7tz2M01YmLNm-R_vzFs6Oc3q7Pyq_CJg_Z6Uw8Yf2vtjHgYz9NhfjSnDo5mDhWQJnwXeHcb3XJLhIKDwPicUCh749PA0X84fo8huyllyyU5lV3LQ46DJoFKoR_c8SYVF7xuvKGRufX8odXeb6TpdYcnZwAPutYiVhc96tX6teqaY2ZmtLbcSbXDTtMNtSdQsz6jEurm2j1lTZGXCALXJtSZuYomuEnyvgBCUZqCxkiAIr46jC4e1DhS0snPnPZAmSH3wE"/>
+                    </div>
+                    <div class="aspect-square rounded-lg overflow-hidden group">
+                        <img alt="Lifestyle 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist close-up of a condensation-covered glass of rose milk with a single pink petal garnish. The lighting is crisp and cool, highlighting the refreshing texture and the light pink hue of the creamy drink." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIDInHGVh8DyOu1e9BgSsSKqtpEAH60IfutTtZ5Na44jyfm89VwbNCLKqrJ3b-DSIN3JGQVz-zDQ_z5E2jKf7BT79aOyJ8ubgVqBpG0Ki3CF0e5MUzd5BDsQOhYLNKPZNR1WAbv1zdZKxR_jl5RfBmAAUr86BbT3sgH165vBZmSvg2ZgmrgSIcncIvd9XwPGGnoTeYdl2ruoFgP_ZgGzYIfbkVu6PvYlLDQGP_UKhps9nIxDFjd0drHV0L3tqFwB67Xt4A7z_Nm7U"/>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section (Find a Store) -->
+            <section id="store" class="py-xl bg-primary-container/20">
+                <div class="max-w-3xl mx-auto px-gutter text-center">
+                    <h2 class="font-display-lg text-display-lg text-primary mb-md">Find a Store Near You</h2>
+                    <p class="text-body-lg text-on-surface-variant mb-xl">Craving a bottle of bliss? Locate your nearest Amul shop or retail partner in seconds.</p>
+                    <div class="relative max-w-lg mx-auto mb-lg text-left">
+                        <input class="w-full h-16 pl-14 pr-32 rounded-full border-none bg-surface chilled-glass shadow-lg focus:ring-2 focus:ring-primary text-body-md text-on-surface" placeholder="Enter city or zip code" type="text"/>
+                        <span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-primary text-2xl" data-icon="location_on">location_on</span>
+                        <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-primary hover:bg-primary-container text-on-primary font-label-md px-lg h-12 rounded-full transition-colors">
+                            Search
+                        </button>
+                    </div>
+                    <div class="h-64 w-full rounded-xl overflow-hidden gold-border shadow-lg">
+                        <img alt="Map Location" class="w-full h-full object-cover" data-alt="A stylized, minimalist map illustration of a clean metropolitan area with subtle pink location pins indicating retail stores. The map has a soft, light-mode palette with creamy beige streets and pink accents." data-location="Mumbai" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb25Px5gsyMFLsPEeQ1FBQuTKUbxEEDBCeWpKUcVWllW4pEu4eCDcCQ5BH0U5nToDTpDh1KLEYZGVqo5vRsjwEyibKgIuuUy2IvQew1coGni-wHkevL4Z5538GhGpUBnUnSCqwjVNBnwY7zyU9N8pBBKgEF8pIOY5UHF_o7V4u90x5MhvO3mihvcBqIeO_LlImB7_0dG36aC2CWrwRKfAbJT9R1x7LJ8-_DD4OufMBoJ1dTnO2z_j-ng6YPnCwynTqW_PzkwSBv_4"/>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Brand Footer -->
+            <footer class="bg-surface-container-lowest dark:bg-surface-container-highest w-full py-lg mt-xl border-t border-outline-variant text-left">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-lg px-gutter max-w-container-max mx-auto text-center md:text-left">
+                    <div class="space-y-md">
+                        <div class="text-headline-md font-headline-md text-primary">Amul Kool</div>
+                        <p class="text-body-md font-body-md text-on-surface-variant max-w-xs mx-auto md:mx-0">
+                            The Taste of India. Bringing the finest dairy traditions to your modern lifestyle since 1946.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-sm">
+                        <h4 class="font-label-md text-label-md text-primary uppercase tracking-widest mb-xs">Quick Links</h4>
+                        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Privacy Policy</a>
+                        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Terms of Service</a>
+                        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Contact Us</a>
+                        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Careers</a>
+                        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Sustainability</a>
+                    </div>
+                    <div class="space-y-md">
+                        <h4 class="font-label-md text-label-md text-primary uppercase tracking-widest mb-xs">Stay Refreshed</h4>
+                        <div class="flex gap-md justify-center md:justify-start">
+                            <a class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors" href="#">
+                                <span class="material-symbols-outlined text-primary" data-icon="share">share</span>
+                            </a>
+                            <a class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors" href="#">
+                                <span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
+                            </a>
+                            <a class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors" href="#">
+                                <span class="material-symbols-outlined text-primary" data-icon="phone">phone</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-w-container-max mx-auto px-gutter mt-lg pt-lg border-t border-outline-variant text-center">
+                    <p class="text-body-md font-body-md text-on-surface-variant">
+                        © 2024 Amul Dairy. All rights reserved. The Taste of India.
+                    </p>
+                </div>
+            </footer>
+        </div>
+
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
